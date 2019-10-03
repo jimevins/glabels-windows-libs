@@ -20,12 +20,13 @@ jobs:
       run: |
         vcpkg export --zip libqrencode:x64-windows
 #        vcpkg export --zip qt5-base qt5-svg qt5-tools zlib libqrencode
+        move C:\vcpkg\vcpkg-export-*.zip vcpkg-export.zip
 
-#    - name: Deploy
-#      uses: svenstaro/upload-release-action@v1-release
-#      with:
-#        repo_token: ${{ secrets.GITHUB_TOKEN }}
-#        file: ${{ format('build/glabels-{0}-x86_64.AppImage', steps.cmake_configure.outputs.version) }}
-#        asset_name: ${{ format('build/glabels-{0}-x86_64.AppImage', steps.cmake_configure.outputs.version) }}
-#        tag: ${{ steps.cmake_configure.outputs.version }}
-#        overwrite: true
+    - name: Deploy
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: vcpkg-export.zip
+        asset_name: vcpkg-export.zip
+        tag: test
+        overwrite: true
