@@ -14,13 +14,13 @@ jobs:
 
     - name: Install dependencies
       run: |
+        vcpkg install qt5-base:x64-windows qt5-svg:x64-windows qt5-tools:x64-windows zlib:x64-windows
         vcpkg install libqrencode:x64-windows
 
     - name: Export
       run: |
-        vcpkg export --zip libqrencode:x64-windows
+        vcpkg export --zip qt5-base:x64-windows qt5-svg:x64-windows qt5-tools:x64-windows zlib:x64-windows libqrencode:x64-windows
         move C:\vcpkg\vcpkg-export-*.zip vcpkg-export.zip
-#        vcpkg export --zip qt5-base qt5-svg qt5-tools zlib libqrencode
 
     - name: Deploy
       uses: svenstaro/upload-release-action@v1-release
