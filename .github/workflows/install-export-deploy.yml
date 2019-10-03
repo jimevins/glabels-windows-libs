@@ -18,7 +18,8 @@ jobs:
 
     - name: Export
       run: |
-        vcpkg export --zip qt5-base qt5-svg qt5-tools zlib libqrencode
+        vcpkg export --zip libqrencode
+#        vcpkg export --zip qt5-base qt5-svg qt5-tools zlib libqrencode
 
 #    - name: Deploy
 #      uses: svenstaro/upload-release-action@v1-release
