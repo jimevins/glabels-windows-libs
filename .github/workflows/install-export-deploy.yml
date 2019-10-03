@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: |
         vcpkg install libqrencode:x64-windows
-	
+
     - name: Export
       run: |
         vcpkg export --zip qt5-base qt5-svg qt5-tools zlib libqrencode
